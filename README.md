@@ -20,7 +20,8 @@ python3 app.py
   * This will parse the ptt website of Beauty and send you a photo randomly
 5. 測驗
   * This will throw you a exam, and it is displayed in buttons
-  
+#### I also deploy the bot to heroku
+
 ### Finite State Machine
 ![fsm](./img/show-fsm.png)
 
