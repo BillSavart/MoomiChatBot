@@ -1,5 +1,7 @@
 # MoomiChatBot
-A messenger chat bot for Moomi's fan page. Also a project for Theory of Computation in CSIE, NCKU.
+A messenger chatbot for Moomi's fan page. Also a project for Theory of Computation in CSIE, NCKU.
+
+## Introduce
 #### How to Run Locally
 ```bash
 ./ngrok http 5000
@@ -22,8 +24,8 @@ python3 app.py
   * This will throw you a exam, and it is displayed in buttons
 #### I also deploy the bot to heroku
 
-#### Finite State Machine
+## Finite State Machine
 ![fsm](./img/show-fsm.png)
 
-#### Warning
+## Warning
 **DON'T SEND ANYTHING THAT IS NOT IN TEXT FORM**
