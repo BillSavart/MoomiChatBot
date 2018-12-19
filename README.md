@@ -1,6 +1,6 @@
 # MoomiChatBot
 A messenger chat bot for Moomi's fan page. Also a project for Theory of Computation in CSIE, NCKU.
-### How to Run Locally
+#### How to Run Locally
 ```bash
 ./ngrok http 5000
 ```
@@ -8,7 +8,7 @@ A messenger chat bot for Moomi's fan page. Also a project for Theory of Computat
 ```bash
 python3 app.py
 ```
-### How to Interact with Chatbot
+#### How to Interact with Chatbot
 1. 嗨
   * This will give you a simple introduce of the page, and how to interact with the bot
 2. 抽姆咪
@@ -22,8 +22,8 @@ python3 app.py
   * This will throw you a exam, and it is displayed in buttons
 #### I also deploy the bot to heroku
 
-### Finite State Machine
+#### Finite State Machine
 ![fsm](./img/show-fsm.png)
 
-### Warning
+#### Warning
 **DON'T SEND ANYTHING THAT IS NOT IN TEXT FORM**
