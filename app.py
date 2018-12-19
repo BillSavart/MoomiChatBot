@@ -11,7 +11,7 @@ import json
 import os
 import pygraphviz
 
-PORT = os.environ['PORT']
+#PORT = os.environ['PORT']
 
 VERIFY_TOKEN = "moomimoomishindongdong"
 machine = TocMachine(
@@ -23,7 +23,8 @@ machine = TocMachine(
         'state4',
         'state5',
         'state6',
-        'state7'
+        'state7',
+        'state8'
     ],
     transitions=[
         {
@@ -69,12 +70,19 @@ machine = TocMachine(
             'conditions': 'is_going_to_state7'
         },
         {
+            'trigger': 'advance',
+            'source': 'user',
+            'dest': 'state8',
+            'conditions': 'is_going_to_state8'
+        },
+        {
             'trigger': 'go_back',
             'source': [
                 'state1',
                 'state2',
                 'state6',
-                'state7'
+                'state7',
+                'state8'
             ],
             'dest': 'user'
         }       
@@ -197,6 +205,7 @@ if __name__ == "__main__":
         # 儲存文章資訊
         with open('data.json', 'w', encoding='utf-8') as f:
             json.dump(temp_url, f, indent=2, sort_keys=True, ensure_ascii=False)
+    
 
-    #run(host="localhost", port=5000, debug=True, reloader=True)
-    run(host="0.0.0.0", port=PORT, debug=True, reloader=True)
+    run(host="localhost", port=5000, debug=True, reloader=True)
+    #run(host="0.0.0.0", port=PORT, debug=True, reloader=True)

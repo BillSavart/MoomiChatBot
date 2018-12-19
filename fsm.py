@@ -2,6 +2,7 @@ from transitions.extensions import GraphMachine
 
 from utils import send_text_message
 from utils import send_img_message
+from utils import send_button_message
 
 from random import randint
 import json
@@ -14,14 +15,14 @@ class TocMachine(GraphMachine):
         )
 
     def is_going_to_state1(self, event):
-        if event.get("message"):
-            text = event['message']['text']
+        if event.get("postback"):
+            text = event['postback'].get('payload')
             return text.lower() == '你是誰'
         return False
 
     def is_going_to_state2(self, event):
-        if event.get("message"):
-            text = event['message']['text']
+        if event.get("postback"):
+            text = event['postback'].get('payload')
             return text.lower() == '抽姆咪'
         return False
     
@@ -50,9 +51,15 @@ class TocMachine(GraphMachine):
         return False
 
     def is_going_to_state7(self, event):
+        if event.get("postback"):
+            text = event['postback'].get('payload')
+            return text.lower() == '我想要女主人'
+        return False
+
+    def is_going_to_state8(self, event):
         if event.get("message"):
             text = event['message']['text']
-            return text.lower() == '我想要女主人'
+            return text.lower() == '嗨'
         return False
 
     def on_enter_state1(self, event):
@@ -161,3 +168,28 @@ class TocMachine(GraphMachine):
 
     def on_exit_state7(self):
         print('Leaving state7 for pick a girl')
+
+    def on_enter_state8(self, event):
+        print("I'm entering state8 for buttons")
+
+        sender_id = event['sender']['id']
+        
+        buttons = [{
+            'type': 'postback',
+            'title': "你是誰",
+            'payload': '你是誰'
+        },{
+            'type': 'postback',
+            'title': "抽姆咪",
+            'payload': '抽姆咪'
+        },{
+            'type': 'postback',
+            'title': "我想要女主人",
+            'payload': '我想要女主人'
+        }]
+        
+        send_button_message(sender_id, "嗨,我是姆咪,你想做什麼呢？", buttons)
+        self.go_back()
+
+    def on_exit_state8(self):
+        print("Leaving state8")
