@@ -24,7 +24,13 @@ machine = TocMachine(
         'state5',
         'state6',
         'state7',
-        'state8'
+        'state8',
+        'state9',
+        'state10',
+        'state11',
+        'state12',
+        'state13',
+        'state14'
     ],
     transitions=[
         {
@@ -53,15 +59,33 @@ machine = TocMachine(
         },
         {
             'trigger': 'advance',
+            'source': 'state3',
+            'dest': 'state12',
+            'conditions': 'is_going_to_state12'
+        },
+        {
+            'trigger': 'advance',
             'source': 'state4',
             'dest': 'state5',
             'conditions': 'is_going_to_state5'
         },
         {
             'trigger': 'advance',
+            'source': 'state4',
+            'dest': 'state13',
+            'conditions': 'is_going_to_state13'
+        },
+        {
+            'trigger': 'advance',
             'source': 'state5',
             'dest': 'state6',
             'conditions': 'is_going_to_state6'
+        },
+        {
+            'trigger': 'advance',
+            'source': 'state5',
+            'dest': 'state14',
+            'conditions': 'is_going_to_state14'
         },
         {
             'trigger': 'advance',
@@ -76,16 +100,39 @@ machine = TocMachine(
             'conditions': 'is_going_to_state8'
         },
         {
+            'trigger': 'advance',
+            'source': 'state8',
+            'dest': 'state9',
+            'conditions': 'is_going_to_state9'
+        },
+        {
+            'trigger': 'advance',
+            'source': 'state8',
+            'dest': 'state10',
+            'conditions': 'is_going_to_state10'
+        },
+        {
+            'trigger': 'advance',
+            'source': 'state8',
+            'dest': 'state11',
+            'conditions': 'is_going_to_state11'
+        },
+        {
             'trigger': 'go_back',
             'source': [
                 'state1',
                 'state2',
                 'state6',
                 'state7',
-                'state8'
+                'state9',
+                'state10',
+                'state11',
+                'state12',
+                'state13',
+                'state14'
             ],
             'dest': 'user'
-        }       
+        }
     ],
     initial='user',
     auto_transitions=False,
@@ -190,8 +237,6 @@ if __name__ == "__main__":
             articles += current_articles
             current_page = get_web_page(PTT_URL + prev_url)
             current_articles, prev_url = get_articles(current_page, date)
-
-
         
         # 已取得文章列表，開始進入各文章讀圖
         for article in articles:
@@ -205,7 +250,6 @@ if __name__ == "__main__":
         # 儲存文章資訊
         with open('data.json', 'w', encoding='utf-8') as f:
             json.dump(temp_url, f, indent=2, sort_keys=True, ensure_ascii=False)
-    
 
     run(host="localhost", port=5000, debug=True, reloader=True)
     #run(host="0.0.0.0", port=PORT, debug=True, reloader=True)

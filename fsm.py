@@ -15,14 +15,14 @@ class TocMachine(GraphMachine):
         )
 
     def is_going_to_state1(self, event):
-        if event.get("postback"):
-            text = event['postback'].get('payload')
-            return text.lower() == '你是誰'
+        if event.get("message"):
+            text = event['message']['text']
+            return text.lower() == '嗨'
         return False
 
     def is_going_to_state2(self, event):
-        if event.get("postback"):
-            text = event['postback'].get('payload')
+        if event.get("message"):
+            text = event['message']['text']
             return text.lower() == '抽姆咪'
         return False
     
@@ -51,22 +51,61 @@ class TocMachine(GraphMachine):
         return False
 
     def is_going_to_state7(self, event):
-        if event.get("postback"):
-            text = event['postback'].get('payload')
+        if event.get("message"):
+            text = event['message']['text']
             return text.lower() == '我想要女主人'
         return False
 
     def is_going_to_state8(self, event):
         if event.get("message"):
             text = event['message']['text']
-            return text.lower() == '嗨'
+            return text.lower() == '測驗'
+        return False
+
+    def is_going_to_state9(self, event):
+        if event.get("postback"):
+            text = event['postback'].get('payload')
+            return text == 'Python'
+        return False
+
+    def is_going_to_state10(self, event):
+        if event.get("postback"):
+            text = event['postback'].get('payload')
+            return text == 'Java'
+        return False
+    
+    def is_going_to_state11(self, event):
+        if event.get("postback"):
+            text = event['postback'].get('payload')
+            return text == 'C++'
+        return False
+    
+    def is_going_to_state12(self, event):
+        if event.get("message"):
+            text = event['message']['text']
+            if text != '在你面前撒個嬌':
+                return True
+        return False
+
+    def is_going_to_state13(self, event):
+        if event.get("message"):
+            text = event['message']['text']
+            if text != '我的心臟蹦蹦跳':
+                return True
+        return False
+
+    def is_going_to_state14(self, event):
+        if event.get("message"):
+            text = event['message']['text']
+            if text != '你不說愛我我就喵喵喵':
+                return True
         return False
 
     def on_enter_state1(self, event):
         print("I'm entering state1 for intro")
 
         sender_id = event['sender']['id']
-        intro_text = "嗨, 我是姆咪, 我是一隻四個月大的虎班貓\n人家是女森喔！嘻嘻 ><\n這是我的instagram, 去追蹤一下吧！ https://www.instagram.com/moomi.the.cat"
+        intro_text = "嗨, 我是姆咪, 我是一隻四個月大的虎班貓\n人家是女森喔！嘻嘻 ><\n這是我的instagram, 去追蹤一下吧！ https://www.instagram.com/moomi.the.cat\n你可以輸入以下指令：\n1.抽姆咪\n2.我們一起學貓叫\n3.我想要女主人\n4.測驗"
         responese = send_text_message(sender_id, intro_text)
         self.go_back()
 
@@ -176,20 +215,79 @@ class TocMachine(GraphMachine):
         
         buttons = [{
             'type': 'postback',
-            'title': "你是誰",
-            'payload': '你是誰'
+            'title': "Python",
+            'payload': 'Python'
         },{
             'type': 'postback',
-            'title': "抽姆咪",
-            'payload': '抽姆咪'
+            'title': "Java",
+            'payload': 'Java'
         },{
             'type': 'postback',
-            'title': "我想要女主人",
-            'payload': '我想要女主人'
+            'title': "C++",
+            'payload': 'C++'
         }]
         
-        send_button_message(sender_id, "嗨,我是姆咪,你想做什麼呢？", buttons)
+        send_button_message(sender_id, "我是用什麼語言寫的？", buttons)
+
+    def on_exit_state8(self, event):
+        print("Leaving state8")
+
+    def on_enter_state9(self, event):
+        print("I'm entering state9")
+
+        sender_id = event['sender']['id']
+        send_text_message(sender_id, "答對了呢嘻嘻")
         self.go_back()
 
-    def on_exit_state8(self):
-        print("Leaving state8")
+    def on_exit_state9(self):
+        print("Leaving state9")
+
+    def on_enter_state10(self, event):
+        print("I'm entering state9")
+
+        sender_id = event['sender']['id']
+        send_text_message(sender_id, "猜錯了嘻嘻")
+        self.go_back()
+
+    def on_exit_state10(self):
+        print("Leaving state10")
+
+    def on_enter_state11(self, event):
+        print("I'm entering state11")
+
+        sender_id = event['sender']['id']
+        send_text_message(sender_id, "猜錯了唷嘻嘻")
+        self.go_back()
+
+    def on_exit_state11(self):
+        print("Leaving state11")
+
+    def on_enter_state12(self, event):
+        print("I'm entering state12")
+
+        sender_id = event['sender']['id']
+        send_text_message(sender_id, "唱錯了啦><\n是在你面前撒個嬌啦")
+        self.go_back()
+
+    def on_exit_state12(self):
+        print("Leaving state12")
+
+    def on_enter_state13(self, event):
+        print("I'm entering state13")
+
+        sender_id = event['sender']['id']
+        send_text_message(sender_id, "唱錯了啦><\n是我的心臟蹦蹦跳啦")
+        self.go_back()
+
+    def on_exit_state13(self):
+        print("Leaving state13")
+
+    def on_enter_state14(self, event):
+        print("I'm entering state14")
+
+        sender_id = event['sender']['id']
+        send_text_message(sender_id, "唱錯了啦><\n是你不說愛我我就喵喵喵啦")
+        self.go_back()
+
+    def on_exit_state14(self):
+        print("Leaving state14")
