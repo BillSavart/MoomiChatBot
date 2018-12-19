@@ -24,6 +24,5 @@ python3 app.py
 ### Finite State Machine
 ![fsm](./img/show-fsm.png)
 
-:::danger
- DON'T SEND ANYTHING THAT IS NOT IN TEXT FORM
-:::
+### Warning
+**DON'T SEND ANYTHING THAT IS NOT IN TEXT FORM**
