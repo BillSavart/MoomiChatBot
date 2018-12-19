@@ -148,7 +148,7 @@ class TocMachine(GraphMachine):
         print('Leaving state6 for sing4')
 
     def on_enter_state7(self, event):
-        print("I'm entering state7 for shindongdong")
+        print("I'm entering state7 for pick a girl")
 
         sender_id = event['sender']['id']
         with open('data.json') as f:
@@ -160,4 +160,4 @@ class TocMachine(GraphMachine):
         self.go_back()
 
     def on_exit_state7(self):
-        print('Leaving state7 for shindongdong')
+        print('Leaving state7 for pick a girl')

@@ -9,6 +9,8 @@ import re
 import urllib.request
 import json
 
+import pygraphviz
+
 VERIFY_TOKEN = "moomimoomishindongdong"
 machine = TocMachine(
     states=[
