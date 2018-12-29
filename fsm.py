@@ -15,87 +15,87 @@ class TocMachine(GraphMachine):
         )
 
     def is_going_to_state1(self, event):
-        if event.get("message"):
+        if event.get("message") and event['message'].get("text"):
             text = event['message']['text']
             return text.lower() == '嗨'
         return False
 
     def is_going_to_state2(self, event):
-        if event.get("message"):
+        if event.get("message") and event['message'].get("text"):
             text = event['message']['text']
             return text.lower() == '抽姆咪'
         return False
     
     def is_going_to_state3(self, event):
-        if event.get("message"):
+        if event.get("message") and event['message'].get("text"):
             text = event['message']['text']
             return text.lower() == '我們一起學貓叫'
         return False
 
     def is_going_to_state4(self, event):
-        if event.get("message"):
+        if event.get("message") and event['message'].get("text"):
             text = event['message']['text']
             return text.lower() == '在你面前撒個嬌'
         return False
 
     def is_going_to_state5(self, event):
-        if event.get("message"):
+        if event.get("message") and event['message'].get("text"):
             text = event['message']['text']
             return text.lower() == '我的心臟蹦蹦跳'
         return False
 
     def is_going_to_state6(self, event):
-        if event.get("message"):
+        if event.get("message") and event['message'].get("text"):
             text = event['message']['text']
             return text.lower() == '你不說愛我我就喵喵喵'
         return False
 
     def is_going_to_state7(self, event):
-        if event.get("message"):
+        if event.get("message") and event['message'].get("text"):
             text = event['message']['text']
             return text.lower() == '我想要女主人'
         return False
 
     def is_going_to_state8(self, event):
-        if event.get("message"):
+        if event.get("message") and event['message'].get("text"):
             text = event['message']['text']
             return text.lower() == '測驗'
         return False
 
     def is_going_to_state9(self, event):
-        if event.get("postback"):
+        if event.get("postback") and event['message'].get("text"):
             text = event['postback'].get('payload')
             return text == 'Python'
         return False
 
     def is_going_to_state10(self, event):
-        if event.get("postback"):
+        if event.get("postback") and event['message'].get("text"):
             text = event['postback'].get('payload')
             return text == 'Java'
         return False
     
     def is_going_to_state11(self, event):
-        if event.get("postback"):
+        if event.get("postback") and event['message'].get("text"):
             text = event['postback'].get('payload')
             return text == 'C++'
         return False
     
     def is_going_to_state12(self, event):
-        if event.get("message"):
+        if event.get("message") and event['message'].get("text"):
             text = event['message']['text']
             if text != '在你面前撒個嬌':
                 return True
         return False
 
     def is_going_to_state13(self, event):
-        if event.get("message"):
+        if event.get("message") and event['message'].get("text"):
             text = event['message']['text']
             if text != '我的心臟蹦蹦跳':
                 return True
         return False
 
     def is_going_to_state14(self, event):
-        if event.get("message"):
+        if event.get("message") and event['message'].get("text"):
             text = event['message']['text']
             if text != '你不說愛我我就喵喵喵':
                 return True
