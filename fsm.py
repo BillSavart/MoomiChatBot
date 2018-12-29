@@ -63,19 +63,19 @@ class TocMachine(GraphMachine):
         return False
 
     def is_going_to_state9(self, event):
-        if event.get("postback") and event['message'].get("text"):
+        if event.get("postback"):
             text = event['postback'].get('payload')
             return text == 'Python'
         return False
 
     def is_going_to_state10(self, event):
-        if event.get("postback") and event['message'].get("text"):
+        if event.get("postback"):
             text = event['postback'].get('payload')
             return text == 'Java'
         return False
     
     def is_going_to_state11(self, event):
-        if event.get("postback") and event['message'].get("text"):
+        if event.get("postback"):
             text = event['postback'].get('payload')
             return text == 'C++'
         return False
