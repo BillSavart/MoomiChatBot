@@ -28,4 +28,4 @@ python3 app.py
 ![fsm](./img/show-fsm.png)
 
 ## Warning
-**DON'T SEND ANYTHING THAT IS NOT IN TEXT FORM**
+**DON'T SEND ANYTHING THAT IS NOT IN TEXT FORMAT**
